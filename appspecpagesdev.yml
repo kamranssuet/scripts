@@ -1,0 +1,14 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /data/backup/pages/
+
+hooks:
+  AfterInstall:
+   - location: scripts/monitstartpagesdev.sh
+   - location: scripts/monit.sh
+     runas: root
+  ValidateService:
+    - location: scripts/curl.sh
+    - location: scripts/logscheckpagesdev.sh

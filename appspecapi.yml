@@ -1,0 +1,14 @@
+version: 0.0
+os: linux
+files:
+  - source: /nucleus-api/target
+    destination: /data/backup
+hooks:
+  BeforeInstall:
+    - location: scripts/purgeapi.sh
+  AfterInstall:
+    - location: /scripts/curl.sh
+    - location: scripts/stop_api.sh
+    - location: scripts/logscheckapi.sh
+      runas: root
+  

@@ -1,0 +1,15 @@
+version: 0.0
+os: linux
+files:
+  - source: /nucleus-pages/target
+    destination: /data/backup
+hooks:
+  BeforeInstall:
+    - location: scripts/processstart.sh
+  AfterInstall:
+    - location: scripts/curl.sh
+    - location: scripts/stop_server.sh
+    - location: scripts/logscheck.sh
+      runas: root
+      
+  
